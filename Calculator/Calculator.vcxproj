@@ -130,10 +130,12 @@
     <ClCompile Include="advancedMath.c" />
     <ClCompile Include="fileHandling.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="stack.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="advancedMath.h" />
     <ClInclude Include="fileHandling.h" />
+    <ClInclude Include="stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
