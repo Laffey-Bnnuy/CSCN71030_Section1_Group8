@@ -24,18 +24,12 @@
     <ClCompile Include="fileHandling.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stack.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="advancedMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="fileHandling.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
