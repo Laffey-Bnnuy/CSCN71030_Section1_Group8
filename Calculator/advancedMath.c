@@ -124,35 +124,29 @@ void infix_to_postfix(char* infix, char* postfix) {
     int i = 0, j = 0;
     char ch;
     char func[5];
+    int temp = 0;
+    
    // stack = (double*)malloc(sizeof(double));
     //char_stack = (char*)malloc(sizeof(char));
     while ((ch = infix[i++]) != '\0') {
+        temp = is_trig_function(infix, i - 1);
         if (isdigit(ch) || ch == '.') {
             postfix[j++] = ch;
         }
-        else if (is_trig_function(infix, i - 1) == 3) {
-            strncpy(func, &infix[i - 1], 3);
-            func[3] = '\0';
-            i += 2;
-            char_push(func[2]);
-            char_push(func[1]);
-            char_push(func[0]);
+
+        else if (temp > 1) {
+            strncpy(func, &infix[i - 1], temp);
+            func[temp] = '\0';
+            i += temp-1;
+            temp -= 1;
+            for (int t = temp ;t >= 0; t--) {
+                char_push(func[t]);
+            }
             char_push(' ');
             char_push('?');
 
         }
-        else if (is_trig_function(infix, i - 1) == 4) {
-            strncpy(func, &infix[i - 1], 4);
-            func[4] = '\0';
-            i += 3;
-            char_push(func[3]);
-            char_push(func[2]);
-            char_push(func[1]);
-            char_push(func[0]);
-            char_push(' ');
-            char_push('?');
-           
-        }
+        
         else if (is_operator(ch)) {
             postfix[j++] = ' ';
             while (char_top >= 0 && precedence(char_stack[char_top]) >= precedence(ch)) {
@@ -177,10 +171,11 @@ void infix_to_postfix(char* infix, char* postfix) {
             }
             if (char_top >= 0 && char_stack[char_top] == '?') {
                 char_pop();
+                for (int index = temp + 1; index >= 0; index--) {
                 postfix[j++] = char_pop();
-                postfix[j++] = char_pop();
-                postfix[j++] = char_pop();
-                postfix[j++] = char_pop();
+              
+                }
+               
 
             }
 
@@ -230,6 +225,13 @@ double evaluate_postfix(char* expression) {
             operand1 = pop();
             push(func_calculate(func, operand1));
             i += 4;
+        }
+        else if (is_trig_function(expression, i) == 2) {
+            strncpy(func, &expression[i], 2);
+            func[2] = '\0';
+            operand1 = pop();
+            push(func_calculate(func, operand1));
+            i += 2;
         }
         else if (is_operator(ch)) {
             operand2 = pop();
