@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <math.h>
-#define MAX_STACK_SIZE 10000
+#define MAX_STACK_SIZE 2000
 
 // Stack implementation for double values
 
@@ -31,3 +31,5 @@ double func_calculate(char* func, double operand);
 void infix_to_postfix(char* infix, char* postfix);
 
 double evaluate_postfix(char* expression);
+
+void free_stack();

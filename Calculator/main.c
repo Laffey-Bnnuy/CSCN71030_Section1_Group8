@@ -1,6 +1,7 @@
 #include "advancedMath.h"
 
 int main(void) {
+    
     char infix[MAX_STACK_SIZE];
     char postfix[MAX_STACK_SIZE * 2];
 
@@ -17,6 +18,6 @@ int main(void) {
 
     double result = evaluate_postfix(postfix);
     printf("Result: %.5f\n", result);
-
+    free_stack;
     return 0;
 }

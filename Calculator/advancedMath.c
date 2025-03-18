@@ -1,9 +1,9 @@
 #include"advancedMath.h"
 
 // Stack implementation for double values
-double stack[MAX_STACK_SIZE];
+double* stack;
 int top = -1;
-char char_stack[MAX_STACK_SIZE];
+char* char_stack;
 int char_top = -1;
 
 void push(double value) {
@@ -107,8 +107,8 @@ void infix_to_postfix(char* infix, char* postfix) {
     int i = 0, j = 0;
     char ch;
     char func[4];
-
-
+    stack = (double*)malloc(sizeof(double));
+    char_stack = (char*)malloc(sizeof(char));
     while ((ch = infix[i++]) != '\0') {
         if (isdigit(ch) || ch == '.') {
             postfix[j++] = ch;
@@ -218,6 +218,11 @@ double evaluate_postfix(char* expression) {
             exit(EXIT_FAILURE);
         }
     }
+   
+    return pop(); 
+}
 
-    return pop();
+void free_stack() {
+    free(char_stack);
+    free(stack);
 }
