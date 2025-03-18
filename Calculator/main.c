@@ -17,7 +17,7 @@ int main(void) {
     printf("Postfix expression: %s\n", postfix);
 
     double result = evaluate_postfix(postfix);
-    printf("Result: %.5f\n", result);
-    free_stack;
+    printf("Result: %.3f\n", result);
+    //free_stack;
     return 0;
 }

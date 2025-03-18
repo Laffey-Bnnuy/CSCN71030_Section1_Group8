@@ -1,9 +1,9 @@
 #include"advancedMath.h"
 
 // Stack implementation for double values
-double* stack;
+double stack[MAX_STACK_SIZE];
 int top = -1;
-char* char_stack;
+char char_stack[MAX_STACK_SIZE];
 int char_top = -1;
 
 void push(double value) {
@@ -43,7 +43,16 @@ int is_trig_function(char* expression, int index) {
     if (strncmp(&expression[index], "sin", 3) == 0 ||
         strncmp(&expression[index], "cos", 3) == 0 ||
         strncmp(&expression[index], "tan", 3) == 0) {
-        return 1;
+        return 3;
+    }
+    else if (strncmp(&expression[index], "ln", 2) == 0){
+        return 2;
+    }
+    else if (strncmp(&expression[index], "sqrt", 4) == 0) {
+        return 4;
+    }
+    else if (strncmp(&expression[index], "log", 3) == 0) {
+        return 5;
     }
     return 0;
 }
@@ -100,20 +109,28 @@ double func_calculate(char* func, double operand) {
     if (strncmp(func, "tan", 3) == 0) {
         return tan(operand);
     }
+    if (strncmp(func, "sqrt", 4) == 0) {
+        return sqrt(operand);
+    }
+    if (strncmp(func, "ln", 2) == 0) {
+        return log(operand);
+    }
     return 0.0; // Default return value
 }
-
+double log_calculate(double x, double base) {
+    return log(x) / log(base);
+}
 void infix_to_postfix(char* infix, char* postfix) {
     int i = 0, j = 0;
     char ch;
-    char func[4];
-    stack = (double*)malloc(sizeof(double));
-    char_stack = (char*)malloc(sizeof(char));
+    char func[5];
+   // stack = (double*)malloc(sizeof(double));
+    //char_stack = (char*)malloc(sizeof(char));
     while ((ch = infix[i++]) != '\0') {
         if (isdigit(ch) || ch == '.') {
             postfix[j++] = ch;
         }
-        else if (is_trig_function(infix, i - 1)) {
+        else if (is_trig_function(infix, i - 1) == 3) {
             strncpy(func, &infix[i - 1], 3);
             func[3] = '\0';
             i += 2;
@@ -124,6 +141,18 @@ void infix_to_postfix(char* infix, char* postfix) {
             char_push('?');
 
         }
+        else if (is_trig_function(infix, i - 1) == 4) {
+            strncpy(func, &infix[i - 1], 4);
+            func[4] = '\0';
+            i += 3;
+            char_push(func[3]);
+            char_push(func[2]);
+            char_push(func[1]);
+            char_push(func[0]);
+            char_push(' ');
+            char_push('?');
+           
+        }
         else if (is_operator(ch)) {
             postfix[j++] = ' ';
             while (char_top >= 0 && precedence(char_stack[char_top]) >= precedence(ch)) {
@@ -132,7 +161,7 @@ void infix_to_postfix(char* infix, char* postfix) {
             }
 
             char_push(ch);
-            char_push(' ');
+            
         }
         else if (ch == '(') {
             char_push(ch);
@@ -179,7 +208,7 @@ double evaluate_postfix(char* expression) {
     int i = 0;
     double operand1, operand2, result;
     char ch;
-    char func[4];
+    char func[5];
 
     while (expression[i] != '\0') {
         ch = expression[i];
@@ -188,12 +217,19 @@ double evaluate_postfix(char* expression) {
             double num = parse_number(expression, &i);
             push(num);
         }
-        else if (is_trig_function(expression, i)) {
+        else if (is_trig_function(expression, i) == 3 ) {
             strncpy(func, &expression[i], 3);
             func[3] = '\0';
             operand1 = pop();
             push(func_calculate(func, operand1));
             i += 3;
+        }
+        else if (is_trig_function(expression, i) == 4) {
+            strncpy(func, &expression[i], 4);
+            func[4] = '\0';
+            operand1 = pop();
+            push(func_calculate(func, operand1));
+            i += 4;
         }
         else if (is_operator(ch)) {
             operand2 = pop();
