@@ -130,6 +130,8 @@
     <ClCompile Include="advancedMath.c" />
     <ClCompile Include="fileHandling.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="matrix.c" />
+    <ClCompile Include="matrix.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="advancedMath.h" />

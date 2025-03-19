@@ -33,3 +33,4 @@ void infix_to_postfix(char* infix, char* postfix);
 double evaluate_postfix(char* expression);
 
 void free_stack();
+void advanced_math();

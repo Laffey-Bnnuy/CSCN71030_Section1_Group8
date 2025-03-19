@@ -125,11 +125,12 @@ void infix_to_postfix(char* infix, char* postfix) {
     char ch;
     char func[5];
     int temp = 0;
-    
+    int temp1 = 0;
    // stack = (double*)malloc(sizeof(double));
     //char_stack = (char*)malloc(sizeof(char));
     while ((ch = infix[i++]) != '\0') {
         temp = is_trig_function(infix, i - 1);
+        temp1 = temp;
         if (isdigit(ch) || ch == '.') {
             postfix[j++] = ch;
         }
@@ -142,7 +143,7 @@ void infix_to_postfix(char* infix, char* postfix) {
             for (int t = temp ;t >= 0; t--) {
                 char_push(func[t]);
             }
-            char_push(' ');
+            char_push(temp1+'0');
             char_push('?');
 
         }
@@ -171,7 +172,8 @@ void infix_to_postfix(char* infix, char* postfix) {
             }
             if (char_top >= 0 && char_stack[char_top] == '?') {
                 char_pop();
-                for (int index = temp + 1; index >= 0; index--) {
+                temp = char_pop() - '0';
+                for (int index = temp -1 ; index >= 0; index--) {
                 postfix[j++] = char_pop();
               
                 }
@@ -263,4 +265,23 @@ double evaluate_postfix(char* expression) {
 void free_stack() {
     free(char_stack);
     free(stack);
+}
+
+void advanced_math() {
+    char infix[MAX_STACK_SIZE];
+    char postfix[MAX_STACK_SIZE * 2];
+
+    printf("Enter an infix expression: ");
+
+    fgets(infix, MAX_STACK_SIZE, stdin);
+
+    // Remove the newline character from the input
+    infix[strcspn(infix, "\n")] = '\0';
+
+    // Convert infix to postfix
+    infix_to_postfix(infix, postfix);
+    printf("Postfix expression: %s\n", postfix);
+
+    double result = evaluate_postfix(postfix);
+    printf("Result: %.3f\n", result);
 }

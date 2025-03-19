@@ -24,6 +24,12 @@
     <ClCompile Include="fileHandling.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="matrix.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="matrix.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="advancedMath.h">
