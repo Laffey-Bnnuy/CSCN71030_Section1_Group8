@@ -128,14 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="advancedMath.c" />
-    <ClCompile Include="fileHandling.c" />
+    <ClCompile Include="graph.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="matrix.c" />
     <ClCompile Include="matrix.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="advancedMath.h" />
-    <ClInclude Include="fileHandling.h" />
+    <ClInclude Include="graph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
