@@ -278,6 +278,16 @@ void advanced_math() {
     // Remove the newline character from the input
     infix[strcspn(infix, "\n")] = '\0';
 
+    // Append the infix expression to a file
+    FILE* file = fopen("infix_expression.txt", "a");
+    if (file == NULL) {
+       
+        printf("Failed to open file for appending.\n");
+        exit(EXIT_FAILURE);
+    }
+    fprintf(file, "%s\n", infix);
+    fclose(file);
+
     // Convert infix to postfix
     infix_to_postfix(infix, postfix);
     printf("Postfix expression: %s\n", postfix);
