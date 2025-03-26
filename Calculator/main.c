@@ -9,6 +9,7 @@ int main(void) {
     //advanced_math();
    // matrix_main();
     //save_matrices_to_file();
-    load_matrices_from_file();
+   // load_matrices_from_file();
+    load_from_file_postfix();
     return 0;
 }

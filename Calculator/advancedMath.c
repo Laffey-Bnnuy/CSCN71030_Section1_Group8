@@ -295,3 +295,22 @@ void advanced_math() {
     double result = evaluate_postfix(postfix);
     printf("Result: %.3f\n", result);
 }
+
+void load_from_file_postfix() {
+    char infix[MAX_STACK_SIZE];
+    char postfix[MAX_STACK_SIZE * 2];
+    FILE* file = fopen("infix_expression.txt", "r");
+    if (file == NULL) {
+
+        printf("Failed to open file for reading.\n");
+        exit(EXIT_FAILURE);
+    }
+    while (fgets(infix, MAX_STACK_SIZE, file)) {
+        infix_to_postfix(infix, postfix);
+        printf("Postfix expression: %s\n", postfix);
+
+        double result = evaluate_postfix(postfix);
+        printf("Result: %.3f\n", result);
+    }
+    fclose(file);
+}
