@@ -35,3 +35,4 @@ double evaluate_postfix(char* expression);
 void free_stack();
 void advanced_math();
 void load_from_file_postfix();
+void advanced_math_wipe();

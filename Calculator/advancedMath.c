@@ -338,3 +338,14 @@ void load_from_file_postfix() {
     }
     fclose(file);
 }
+
+void advanced_math_wipe() {
+    
+    FILE* file = fopen("infix_expression.txt", "w");
+    if (file == NULL) {
+
+        printf("Failed to open file for wiping\n");
+        exit(EXIT_FAILURE);
+    }
+    fclose(file);
+}

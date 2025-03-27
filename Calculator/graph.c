@@ -19,7 +19,7 @@ void distance_2D_main() {
     printf("Enter point B(x,y): ");
     scanf_s("%lf%lf", &B->x, &B->y);
 
-
+    while (getchar() != '\n');
     printf("2D: Distance between A and B is: %lf", distance_2D(A, B));
     
 }
@@ -30,7 +30,7 @@ void distance_3D_main() {
     scanf_s("%lf%lf%lf", &A->x, &A->y,&A->z);
     printf("Enter point B(x,y,z): ");
     scanf_s("%lf%lf%lf", &B->x, &B->y,&B->z);
-
+    while (getchar() != '\n');
 
     printf("3D: Distance between A and B is: %lf", distance_2D(A, B));
 
@@ -160,7 +160,7 @@ void point_area_perimeter() {
         scanf_s("%lf%lf", &array_points_2D[i].x, &array_points_2D[i].y);
     }
     sorting_points_2D(array_points_2D, n);
- 
+    while (getchar() != '\n');
     double** distance;
     distance = (double**)malloc(n * sizeof(double*));
     for (int i = 0; i < n; i++) {
@@ -174,7 +174,7 @@ void point_area_perimeter() {
         printf("%lf %lf\n", array_points_2D[route[i+1]].x, array_points_2D[route[i + 1]].y);
     }*/
     printf("polygon perimeter: %lf\n", perimeter);
-    printf("polygon area: %lf",polygonArea(array_points_2D, n,route));
+    printf("polygon area: %lf\n",polygonArea(array_points_2D, n,route));
 
 }
 

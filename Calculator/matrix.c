@@ -244,5 +244,6 @@ void load_matrices_from_file() {
     }
 
     fclose(file);
-    printf("Matrices saved to matrices.txt\n");
+    printf("Matrices load from matrices.txt\n");
 }
+
