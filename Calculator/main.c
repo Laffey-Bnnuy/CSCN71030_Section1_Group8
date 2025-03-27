@@ -7,11 +7,11 @@
 
 int main(void) {
     
-    advanced_math();
+    //advanced_math();
    // matrix_main();
     //save_matrices_to_file();
    // load_matrices_from_file();
-    //load_from_file_postfix();
+    load_from_file_postfix();
     //point_area_perimeter();
 
     //distance_2D_main();

@@ -29,5 +29,6 @@ rand + 3
 rand/10
 rand / 10
 rand/10
-rand/10\
 rand/10
+rand/10
+rand / (10-9)

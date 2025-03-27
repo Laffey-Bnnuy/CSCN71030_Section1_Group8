@@ -1,5 +1,6 @@
 #include"advancedMath.h"
 #include <time.h>
+#include <windows.h>
 // Stack implementation for double values
 double stack[MAX_STACK_SIZE];
 int top = -1;
@@ -121,7 +122,11 @@ double log_calculate(double x, double base) {
     return log(x) / log(base);
 }
 void infix_to_postfix(char* infix, char* postfix) {
-    srand(time(NULL));
+    LARGE_INTEGER cicles;
+
+    QueryPerformanceCounter(&cicles);
+    srand(cicles.QuadPart);
+
     int i = 0, j = 0;
     char ch;
     char func[5];
@@ -150,10 +155,11 @@ void infix_to_postfix(char* infix, char* postfix) {
 
         }
         else if (temp == 5) {
+           
             ran = rand();
             int ran_temp;
             int loop = log(ran) / log(10);
-            printf("%d", loop);
+           
             while (ran > 0) {
                 int pow_ran = pow(10, loop);
                 ran_temp = ran / pow_ran;
@@ -323,6 +329,7 @@ void load_from_file_postfix() {
         exit(EXIT_FAILURE);
     }
     while (fgets(infix, MAX_STACK_SIZE, file)) {
+        infix[strcspn(infix, "\n")] = '\0';
         infix_to_postfix(infix, postfix);
         printf("Postfix expression: %s\n", postfix);
 
