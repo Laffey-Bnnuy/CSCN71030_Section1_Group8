@@ -6,7 +6,7 @@ double stack[MAX_STACK_SIZE];
 int top = -1;
 char char_stack[MAX_STACK_SIZE];
 int char_top = -1;
-
+#define M_PI 3.14
 void push(double value) {
     if (top >= MAX_STACK_SIZE - 1) {
         printf("Stack overflow\n");
@@ -101,6 +101,7 @@ double parse_number(char* expression, int* index) {
 }
 
 double func_calculate(char* func, double operand) {
+    operand = operand * M_PI / 180;
     if (strncmp(func, "sin", 3) == 0) {
         return sin(operand);
     }
