@@ -1,22 +1,11 @@
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "ui.h"
-#include "calculator.h"
 #include "advancedMath.h"
-#include "fileHandling.h"
 #include "matrix.h"
+#include "fileHandling.h"
 #include "graph.h"
+// mat2x2(2 2 / 3 4)
+// mat3x3(2 2 2/3 4 5)
 
-// Main program entry point
-int main() {
-    printf("Welcome to the Scientific Calculator!\n");
-
-    // Call the UI to handle user interactions and route inputs to the correct module
-    handleUserChoice();
-
-    printf("Exiting calculator. Goodbye!\n");
- 
+int main(void) {
     
     //advanced_math();
     matrix_main();
