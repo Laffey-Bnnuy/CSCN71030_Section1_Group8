@@ -1,5 +1,5 @@
 #include"advancedMath.h"
-
+#include <time.h>
 // Stack implementation for double values
 double stack[MAX_STACK_SIZE];
 int top = -1;
@@ -51,7 +51,7 @@ int is_trig_function(char* expression, int index) {
     else if (strncmp(&expression[index], "sqrt", 4) == 0) {
         return 4;
     }
-    else if (strncmp(&expression[index], "log", 3) == 0) {
+    else if (strncmp(&expression[index], "rand", 4) == 0) {
         return 5;
     }
     return 0;
@@ -121,11 +121,13 @@ double log_calculate(double x, double base) {
     return log(x) / log(base);
 }
 void infix_to_postfix(char* infix, char* postfix) {
+    srand(time(NULL));
     int i = 0, j = 0;
     char ch;
     char func[5];
     int temp = 0;
     int temp1 = 0;
+    int ran = 0;
    // stack = (double*)malloc(sizeof(double));
     //char_stack = (char*)malloc(sizeof(char));
     while ((ch = infix[i++]) != '\0') {
@@ -135,7 +137,7 @@ void infix_to_postfix(char* infix, char* postfix) {
             postfix[j++] = ch;
         }
 
-        else if (temp > 1) {
+        else if (temp > 1 && temp < 5) {
             strncpy(func, &infix[i - 1], temp);
             func[temp] = '\0';
             i += temp-1;
@@ -146,6 +148,21 @@ void infix_to_postfix(char* infix, char* postfix) {
             char_push(temp1+'0');
             char_push('?');
 
+        }
+        else if (temp == 5) {
+            ran = rand();
+            int ran_temp;
+            int loop = log(ran) / log(10);
+            printf("%d", loop);
+            while (ran > 0) {
+                int pow_ran = pow(10, loop);
+                ran_temp = ran / pow_ran;
+                postfix[j++] = ran_temp + '0';
+                loop = loop - 1;
+                ran = ran % pow_ran;
+            }
+            i += temp - 2;
+            
         }
         
         else if (is_operator(ch)) {
