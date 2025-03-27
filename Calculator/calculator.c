@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "calculator.h"
+#include <math.h>
 
 // Function to perform the calculation based on operation
 double calculate(double result, char operation, double num) {
@@ -12,7 +13,7 @@ double calculate(double result, char operation, double num) {
             return result / num;
         else {
             printf("Error: Division by zero is not allowed!\n");
-            return result;  // Return the previous result unchanged
+            return NAN;  // Return the previous result unchanged
         }
     default:
         printf("Invalid operator! Use +, -, *, / or =\n");
