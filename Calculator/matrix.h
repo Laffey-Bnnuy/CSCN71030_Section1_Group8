@@ -6,6 +6,6 @@
 #define MAX_M 3
 
 
-void matrix();
+void matrix_main();
 void save_matrices_to_file();
 void load_matrices_from_file();
