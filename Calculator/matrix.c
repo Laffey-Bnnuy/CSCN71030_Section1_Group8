@@ -127,6 +127,42 @@ void matrix_operations() {
     free(result);
 }
 
+double determinant() {
+    printf("Enter your choice of matrix (1-4): ");
+    int mat_1;
+    scanf_s("%d", &mat_1);
+    if (!assign[mat_1 - 1]) {
+        printf("You need to define the matrix first\n");
+        return;
+    }
+    if (mat_size[mat_1 - 1][0] != mat_size[mat_1 - 1][1]) {
+        printf("Must be a square matrix for determinant\n");
+        return;
+    }
+
+    
+   
+
+    // Base case for 1x1 matrix
+    if (mat_size[mat_1 - 1][0] == 1) {
+        return mat[mat_1-1][0][0];
+    }
+
+    // Base case for 2x2 matrix
+    if (mat_size[mat_1 - 1][0] == 2) {
+        return mat[mat_1 - 1][0][0] * mat[mat_1 - 1][1][1] - mat[mat_1 - 1][0][1] * mat[mat_1 - 1][1][0];
+    }
+    double det = 0;
+    if (mat_size[mat_1 - 1][0] == 3) {
+        for (int i = 0; i < 3; i++) {
+            det = det + (mat[mat_1 - 1][0][i] * (mat[mat_1 - 1][1][(i + 1) % 3] * mat[mat_1 - 1][2][(i + 2) % 3] - mat[mat_1 - 1][1][(i + 2) % 3] * mat[mat_1 - 1][2][(i + 1) % 3]));
+        } 
+        return det;
+    }
+
+   
+}
+
 void matrix_main() {
     int mat_choice = 0;
     bool cont = true;
@@ -146,6 +182,9 @@ void matrix_main() {
         case 2:
             matrix_operations();
             break; 
+        case 3:
+            printf("Determinant: %lf\n",determinant());
+            break;
         case 0:
             return;
     }
