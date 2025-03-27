@@ -66,6 +66,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ItemGroup>
+    <ClCompile Include="calculator.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="advancedMath.c" />
     <ClCompile Include="graph.c" />
@@ -73,6 +74,7 @@
     <ClCompile Include="matrix.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="calculator.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="ui.h" />
     <ClInclude Include="advancedMath.h" />

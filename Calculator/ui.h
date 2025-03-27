@@ -13,9 +13,6 @@ void acceptUserInput(char* inputBuffer, int bufferSize);
 // Function to validate user input
 bool validateInput(const char *expression);
 
-// Function to send expression to computation module
-double sendToComputationModule(const char* expression);
-
 //Function do display the compued result
 void displayResult(double result);
 

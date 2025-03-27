@@ -72,6 +72,34 @@ void handleUserChoice() {
     }
 }
 
+void acceptUserInput(char* inputBuffer, int bufferSize) {
+    if (fgets(inputBuffer, bufferSize, stdin) == NULL) {
+        handleError("Error reading input.");
+        return;
+    }
+
+    // Remove newline character if present
+    size_t len = strlen(inputBuffer);
+    if (len > 0 && inputBuffer[len - 1] == '\n') {
+        inputBuffer[len - 1] = '\0';
+    }
+}
+
+// Function to validate user input
+bool validateInput(const char* expression) {
+    if (expression == NULL || strlen(expression) == 0) {
+        return false;
+    }
+
+    for (int i = 0; expression[i] != '\0'; i++) {
+        char ch = expression[i];
+        if (!(isdigit(ch) || strchr("+-*/().", ch))) {
+            return false; // Invalid character found
+        }
+    }
+
+    return true; // Input is valid
+}
 // Function to display the computed result
 void displayResult(double result) {
     printf("Result: %.10g\n", result);
