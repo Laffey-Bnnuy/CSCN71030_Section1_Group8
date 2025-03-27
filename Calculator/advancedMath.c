@@ -1,6 +1,8 @@
 #include"advancedMath.h"
 #include <time.h>
 #include <windows.h>
+#include <math.h>
+#define PI         3.14159265358979323846
 // Stack implementation for double values
 double stack[MAX_STACK_SIZE];
 int top = -1;
@@ -102,16 +104,16 @@ double parse_number(char* expression, int* index) {
 
 double func_calculate(char* func, double operand) {
     if (strncmp(func, "sin", 3) == 0) {
-        return sin(operand);
+        return sin(operand * PI / 180.0);
     }
     if (strncmp(func, "cos", 3) == 0) {
-        return cos(operand);
+        return cos(operand * PI / 180.0);
     }
     if (strncmp(func, "tan", 3) == 0) {
-        return tan(operand);
+        return tan(operand * PI / 180.0);
     }
     if (strncmp(func, "sqrt", 4) == 0) {
-        return sqrt(operand);
+        return sqrt(operand );
     }
     if (strncmp(func, "ln", 2) == 0) {
         return log(operand);
