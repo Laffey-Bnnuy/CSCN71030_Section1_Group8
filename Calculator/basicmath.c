@@ -36,6 +36,7 @@ char getOperation() {
     char op;
     while (1) {
         scanf_s(" %c", &op, 1);
+        while (getchar() != '\n');
         if (op == '+' || op == '-' || op == '*' || op == '/' || op == '=')
             return op;
         printf("Invalid operator! Enter +, -, *, / or =: ");
