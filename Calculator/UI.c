@@ -11,7 +11,7 @@
 void displayMenu() {
     printf("\n--- Scientific Calculator ---\n");
     printf("1. Basic Math Operations (+, -, *, /)\n");
-    printf("2. Advanced Math Functions (sin, cos, tan, sqrt, log, ln)\n");
+    printf("2. Advanced Math Functions (sin, cos, tan, sqrt, ln)\n");
     printf("3. Matrix Operations\n");
     printf("4. Graph Computations\n");
     printf("5. Exit\n");
