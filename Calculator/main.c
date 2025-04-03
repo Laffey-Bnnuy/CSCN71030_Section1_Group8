@@ -4,13 +4,13 @@
 #include "graph.h"
 #include <string.h>
 #include "basicmath.h"
-
+#include "UI.h"
 
 void handle_cmd_argument(char* argument);
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        printf("Usage: %s <command>\n<command>: matrix, save_matrices, load_matrices, point_area, distance_2d, distance_3d, advanced_math, adv_math_history, adv_math_wipe, basic_math", argv[0]);
+        printf("Usage: %s <command>\n<command>: UI, matrix, save_matrices, load_matrices, point_area, distance_2d, distance_3d, advanced_math, adv_math_history, adv_math_wipe, basic_math", argv[0]);
         return 1;
     }
 
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
     while (1) {
        
         handle_cmd_argument(buffer); 
-        printf("\n<command>: matrix, save_matrices, load_matrices, point_area, distance_2d, distance_3d, advanced_math, adv_math_history, adv_math_wipe, basic_math\nEnter your <command>:");
+        printf("\n<command>: UI, matrix, save_matrices, load_matrices, point_area, distance_2d, distance_3d, advanced_math, adv_math_history, adv_math_wipe, basic_math\nEnter your <command>:");
         gets_s(buffer, 100); 
        
         if (strcmp(buffer ,"0") == 0) {
@@ -65,6 +65,10 @@ void handle_cmd_argument(char* argument) {
     }
     else if (strcmp(argument, "basic_math") == 0) {
         basic_math_main();
+    }
+    else if (strcmp(argument, "UI") == 0) {
+        
+        handleUserChoice();
     }
     else {
         printf("Unknown command: %s\n", argument);
