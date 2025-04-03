@@ -20,7 +20,7 @@ void distance_2D_main() {
     scanf_s("%lf%lf", &B->x, &B->y);
 
     while (getchar() != '\n');
-    printf("2D: Distance between A and B is: %lf", distance_2D(A, B));
+    printf("2D: Distance between A and B is: %lf\n", distance_2D(A, B));
     
 }
 void distance_3D_main() {
@@ -32,7 +32,7 @@ void distance_3D_main() {
     scanf_s("%lf%lf%lf", &B->x, &B->y,&B->z);
     while (getchar() != '\n');
 
-    printf("3D: Distance between A and B is: %lf", distance_2D(A, B));
+    printf("3D: Distance between A and B is: %lf", distance_3D(A, B));
 
 }
 void ArraySwap(int i, int j, PP2D array) {

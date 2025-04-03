@@ -13,8 +13,10 @@ void displayMenu() {
     printf("1. Basic Math Operations (+, -, *, /)\n");
     printf("2. Advanced Math Functions (sin, cos, tan, sqrt, ln)\n");
     printf("3. Matrix Operations\n");
-    printf("4. Graph Computations\n");
-    printf("5. Exit\n");
+    printf("4. Distance 2D points\n");
+    printf("5. Distance 2D points\n");
+    printf("6. Polygon area and perimeter\n");
+    printf("7. Exit\n");
 }
 
 // Function to handle user choices in the menu
@@ -32,7 +34,7 @@ void handleUserChoice() {
             continue;
         }
         while (getchar() != '\n');
-        if (choice == 5) {
+        if (choice == 7) {
             printf("Exiting the calculator. Goodbye!\n");
             break;
         }
@@ -48,8 +50,15 @@ void handleUserChoice() {
             matrix_main();
             continue;
         case 4:
+            distance_2D_main();
+            continue;
+        case 5:
+            distance_3D_main();
+            continue;
+        case 6:
             point_area_perimeter();
             continue;
+       
         default:
             handleError("Invalid selection.");
             continue;
