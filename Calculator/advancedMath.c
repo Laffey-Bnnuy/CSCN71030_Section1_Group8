@@ -1,6 +1,7 @@
 #include"advancedMath.h"
 #include <time.h>
 #include <windows.h>
+
 // Stack implementation for double values
 double stack[MAX_STACK_SIZE];
 int top = -1;
@@ -303,7 +304,8 @@ void advanced_math() {
     printf("Enter an infix expression: ");
 
     fgets(infix, MAX_STACK_SIZE, stdin);
-
+    //while (getchar() != '\n');
+    //getchar();
     // Remove the newline character from the input
     infix[strcspn(infix, "\n")] = '\0';
 
@@ -324,6 +326,8 @@ void advanced_math() {
         double result = evaluate_postfix(postfix);
         printf("Result: %.3f\n", result);
     }
+    //time(1);
+    //Sleep(1);
     fclose(file);
    
 }

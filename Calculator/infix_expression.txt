@@ -9,3 +9,26 @@ s
 s
 s
 9 + sin(45)*10 - 99/(100-1)
+sin(90)
+sin(99)
+9 + sin(45)
+sin(4)
+sin(45)
+sin(40)
+sin(45)
+sin(45)
+sin(90)
+sin(44)
+sin(45*3)
+sin(9999)
+sin45
+sin(45)
+sin(45)
+sin(45)
+sin(45)
+sin(45)
+sin(2
+sin(90
+sin(45)
+sin(30
+sin(45

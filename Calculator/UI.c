@@ -14,7 +14,7 @@ void displayMenu() {
     printf("2. Advanced Math Functions (sin, cos, tan, sqrt, ln)\n");
     printf("3. Matrix Operations\n");
     printf("4. Distance 2D points\n");
-    printf("5. Distance 2D points\n");
+    printf("5. Distance 3D points\n");
     printf("6. Polygon area and perimeter\n");
     printf("7. Exit\n");
 }
@@ -30,6 +30,7 @@ void handleUserChoice() {
 
         if (scanf("%d", &choice) != 1) {
             handleError("Invalid choice. Please enter a number.");
+            while (getchar() != '\n');
             // Clear input buffer
             continue;
         }
