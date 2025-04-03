@@ -170,6 +170,7 @@ void point_area_perimeter() {
     distance_between_points(distance, array_points_2D, n);
     double perimeter = 0;
     nearestNeighborTSP(distance, route, &perimeter, n);
+    free(distance);
     /*for (int i = 0; i < n ; i++) {
         printf("%lf %lf\n", array_points_2D[route[i+1]].x, array_points_2D[route[i + 1]].y);
     }*/
