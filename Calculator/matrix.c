@@ -170,7 +170,7 @@ void matrix_main() {
     while (cont) {
         printf("\n");
         printf("1. Define matrix  2. Perform + - *\n");
-        printf("3. Determinant    \n");
+        printf("3. Determinant    0. Exit\n");
         printf("Enter your matrix choice: ");
         int item = scanf_s("%d", &mat_choice);
         while (getchar() != '\n');

@@ -7,6 +7,7 @@ int top = -1;
 char char_stack[MAX_STACK_SIZE];
 int char_top = -1;
 #define M_PI 3.14
+int error_code = 0;
 void push(double value) {
     if (top >= MAX_STACK_SIZE - 1) {
         printf("Stack overflow\n");
@@ -134,6 +135,7 @@ void infix_to_postfix(char* infix, char* postfix) {
     int temp = 0;
     int temp1 = 0;
     int ran = 0;
+    error_code = 0;
    // stack = (double*)malloc(sizeof(double));
     //char_stack = (char*)malloc(sizeof(char));
     while ((ch = infix[i++]) != '\0') {
@@ -211,7 +213,9 @@ void infix_to_postfix(char* infix, char* postfix) {
         }
         else {
             printf("Invalid character in expression: %c\n", ch);
-            exit(EXIT_FAILURE);
+            error_code = 1;
+            //exit(EXIT_FAILURE);
+            
         }
 
     }
@@ -221,7 +225,7 @@ void infix_to_postfix(char* infix, char* postfix) {
         postfix[j++] = char_pop();
 
     }
-
+    //error_code = 0;
     postfix[j] = '\0';
 }
 
@@ -280,6 +284,7 @@ double evaluate_postfix(char* expression) {
         else {
             printf("Invalid character in expression: %c\n", ch);
             exit(EXIT_FAILURE);
+         
         }
     }
    
@@ -303,21 +308,24 @@ void advanced_math() {
     infix[strcspn(infix, "\n")] = '\0';
 
     // Append the infix expression to a file
-    FILE* file = fopen("infix_expression.txt", "a");
-    if (file == NULL) {
-       
-        printf("Failed to open file for appending.\n");
-        exit(EXIT_FAILURE);
-    }
-    fprintf(file, "%s\n", infix);
-    fclose(file);
+    
 
     // Convert infix to postfix
     infix_to_postfix(infix, postfix);
-    printf("Postfix expression: %s\n", postfix);
+    FILE* file = fopen("infix_expression.txt", "a");
+    if (file == NULL) {
 
-    double result = evaluate_postfix(postfix);
-    printf("Result: %.3f\n", result);
+        printf("Failed to open file for appending.\n");
+        exit(EXIT_FAILURE);
+    }
+    if (error_code == 0) {
+        fprintf(file, "%s\n", infix); 
+        printf("Postfix expression: %s\n", postfix);
+        double result = evaluate_postfix(postfix);
+        printf("Result: %.3f\n", result);
+    }
+    fclose(file);
+   
 }
 
 void load_from_file_postfix() {
